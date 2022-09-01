@@ -1,0 +1,312 @@
+@font-face {
+	font-family: 'TT Lakes';
+	src: url('fonts/Roboto-Regular.eot');
+	src: local('☺'), url('fonts/Roboto-Regular.woff') format('woff'), url('fonts/Roboto-Regular.ttf') format('truetype'), url('fonts/Roboto-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@keyframes rotating{
+from{
+    transform: rotate(0deg);
+}
+to{
+    transform: rotate(360deg);
+}
+
+
+}
+body{
+    margin: 0;
+    /* padding-left: 16px; */
+    height: 234px; 
+    width: 320px;
+    border: 3px solid aliceblue;
+    background-color: #F2F2F2;
+    }
+    
+    .header{
+    width: 320px;
+    height: 80px;
+    border-top: solid 1px #D9FFF5;
+    background-color: #FFFFFF;
+    }
+    
+    .header__title{
+    font-size: 16px;
+    line-height: 24px;
+    margin: 16px;
+    }
+
+.main__content--swiper{
+    margin: 24px;
+}
+
+.swiper__wrapper{
+border: 2px solid purple;
+display: flex;
+    }
+    
+    .swiper-slide{
+    border: 1px solid #EAEAEA;
+    padding: 20px 16px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    flex-basis: 240px;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   margin-bottom: 16px;
+    }
+    
+    .swiper-slide:hover{
+        transform: scale(0.99);
+        box-shadow: 0 0 20px 2px rgba(124, 153, 156, 0.877); 
+        border-radius: 20px;
+        transform: translateX(5px);
+        z-index: 10;
+    }
+
+    .swiper-slide:hover > .kek{
+        display: block;
+        z-index: 20;
+    }
+
+    .swiper-slide:hover > .swiper__image--back{
+        background-image: url("img/donut.png");
+        background-size: cover;
+        animation: rotating 5s linear infinite;
+        z-index: 20;
+
+    }
+
+    .swiper-slide:hover > .swiper__image--back:nth-of-type(4){
+        background-image: url("img/shrek2.png");
+        background-size: cover;
+        animation: rotating 5s linear infinite;
+        z-index: 25;
+        width: 60px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border-radius: 40px;
+
+    }
+
+    .swiper-slide:hover > .homer{
+        display: block;
+    }
+
+    .swiper-slide:hover > .shrek__head{
+        display: block;
+        animation: rotating 5s linear infinite;
+        background-image: url("img/shrek2.png");
+        
+    }
+
+    button{
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    }
+    
+    .swiper__image-logo--lenovo{
+    background-image: url("img/Lenovo.png");
+    height: 32px;
+    width: 108px;
+    }
+    
+    .swiper__image--back{
+    background-image: url("img/back.png");
+    height: 40px;
+    width: 40px;
+    }
+
+
+    .swiper__image--back:hover{
+        transform: scale(1.1);
+    }
+    
+    .swiper__image-logo--samsung{
+    background-image: url("img/Samsung.png");
+    height: 38px;
+    width: 116px;
+
+    }
+    
+    .swiper__image-logo--apple{
+    background-image: url("img/Apple.png");
+    height: 44px;
+    width: 44px;
+    }
+    
+    .swiper__image-logo--bosch{
+    background-image: url("img/Bosch.png");
+    height: 29px;
+    width: 128px;
+
+    }
+    
+    .swiper__image-logo--hp{
+        height: 52px;
+        width: 52px;
+        background-image: url("img/HP.png");
+    }
+    
+    .swiper__image-logo--acer{
+    background-image: url("img/Acer.png");
+    height: 24px;
+    width: 94px;
+
+    }
+    
+    .swiper__image-logo--viewsonic{
+    background-image: url("img/ViewSonic.png");
+    height: 21px;
+    width: 128px;
+
+    }
+    
+    .swiper__image-logo--sony{
+    background-image: url("img/Sony.png");
+    height: 26px;
+    width: 128px;
+
+    }
+    
+    .swiper-pagination{
+    height: 12px;
+    width: 204px;
+
+    }
+
+.expand{
+border: none;
+display: none;
+height: 24px;
+width: 134px;
+margin-bottom: 24px;
+margin-left: 24px;
+}
+
+.expand__read-more{
+    background-image: url("img/ReadMore.png");
+}
+
+.expand__read-less{
+    background-image: url("img/ReadLess.png");
+    background-repeat: no-repeat;
+}
+
+.swiper-slide--show{
+    display: flex;;
+}
+
+.kek{
+    width: 55px;
+    height: auto;
+    z-index: 10;
+    position: absolute;
+    top: 40px;
+    right: 2px;
+    display: none;
+}
+
+
+.donut{
+    background-image: url("img/donut.png");
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 20;
+    border: 5px solid tomato;
+    
+}
+
+.homer{
+    width: 50px;
+    height: auto;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    display: none;
+    
+}
+
+
+@media (min-width: 768px) {
+.header{
+min-height: 56px;
+min-width: 768px;
+}
+
+body{
+min-height: 322px;
+/* height: auto; */
+min-width: 768px;
+}
+
+
+.expand--active{
+display: block;
+}
+
+
+.expand:hover {
+border: 1px solid aqua;
+}
+
+.swiper-pagination{
+display: none;
+}
+
+.swiper-slide{
+    max-width: 224px;
+    max-height: 72px;
+    border: 1px solid #EAEAEA;
+    /* max-height: 72px; */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 16px;
+    
+}
+
+
+.swiper-wrapper{
+    flex-wrap: wrap;
+    box-sizing: content-box;
+    max-width: 768px;
+    max-height: 266px;
+    overflow: hidden;
+} 
+
+.swiper-slide--hidden{
+    display: none;
+}
+
+
+}
+
+
+
+@media (min-width: 1120px){
+    .header{
+        height: 56px;
+        min-width: 1120px;
+        
+        }
+        
+        body{
+            height: 322px;
+            height: auto;
+            min-width: 1120px;
+        }
+
+        .swiper-wrapper{
+            max-width: 1120px;
+        }
+}
