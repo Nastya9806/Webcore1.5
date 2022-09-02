@@ -1,82 +1,85 @@
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  direction: 'horizontal',
-  // pagination: {
-  //     el: '.swiper-pagination',
-  //     clickable: true,
-      
-  //  },
-  spaceBetween: 10,
-  slidesPerView: "auto",
-  pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-  },
-});
-
-const slides = document.querySelectorAll("swiper-slide");
-const slide = document.querySelectorAll(".swiper-slide--readmore");
-const btnOpen =  document.querySelector(".expand__read-more");
-const btnClose = document.querySelector(".expand__read-less");
-let btnsChange = document.querySelectorAll(".swiper__image--back");
-
-let hiddenSlides;
-let openSlides;
-let middleWidth = false;
-let maxWidth = false;
-
-
-window.addEventListener("resize", function() {
-if (window.matchMedia("(min-width: 768px)").matches) {
-    console.log("ШРЕК ЛУЧШИЙ");
-    for(let i = 0; i < slide.length; i++){
-      hiddenSlides = slide[i].classList.add("swiper-slide--hidden");
-      }
-    middleWidth = true;
-} 
-
-});
-
-window.addEventListener("resize", function() {
-if (window.matchMedia("(min-width: 1100px)").matches) {
-    console.log("GIIIRLS HIIII");
-    for(let i = 0; i < 2; i++){
-     hiddenSlides = slide[i].classList.toggle("swiper-slide--hidden");
-}
-maxWidth = true; 
-return maxWidth;
-}
-});
-
-
-function showMore(){
-  btnOpen.classList.remove("expand--active");
-  btnClose.classList.add("expand--active");
-  for(let i = 0; i < slide.length; i ++){
-      slide[i].classList.remove("swiper-slide--hidden");
-      openSlides = slide[i].classList.add("swiper-slide--show");
-    }
-  return openSlides;
-}
-
-
-
-function closeInf(){
-  btnClose.classList.remove("expand--active");
-  btnOpen.classList.add("expand--active");
-  if(maxWidth){
-    for(let i = 2; i < slide.length; i++){
-      slide[i].classList.remove("swiper-slide--show");
-      slide[i].classList.add("swiper-slide--hidden");
-    }
-  } else if(!maxWidth){
-    for(let i = 0; i < slide.length; i++){
-      slide[i].classList.remove("swiper-slide--show");
-      slide[i].classList.add("swiper-slide--hidden");
-    }
+let slider = null;
+function sliderInit(){
+  if(!slider){
+    slider = new Swiper('.swiper', {
+      direction: 'horizontal',
+      spaceBetween: 10,
+      slidesPerView: "auto",
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+    });
   }
-
 }
 
-btnOpen.addEventListener("click", showMore);
-btnClose.addEventListener("click", closeInf);
+function sliderDestroy() {
+  if(slider){
+    slider.destroy();
+    slider = null;
+  }
+}
+
+window.addEventListener("resize", function(){
+if(window.matchMedia("(max-width: 760px)").matches){
+  sliderInit();
+  console.log("я должен работаьь");
+} else{
+  sliderDestroy();
+  console.log("я НЕ должен работаьь");
+}
+
+});
+
+const slides = document.querySelectorAll(".swiper-slide");
+const btn = document.querySelector(".expand");
+const mediaQuery = window.matchMedia("(min-width: 976px)");
+
+function buttonChange(){
+  if(btn.innerHTML == "Показать всё"){
+   btn.innerHTML = "Скрыть";
+   btn.classList.add("expand--down");
+   btn.classList.remove("expand--on");
+  } else{
+    btn.innerHTML = "Показать всё";
+   btn.classList.add("expand--on");
+   btn.classList.remove("expand--down");
+  }
+}
+
+function showSlides(){
+  if(btn.innerHTML == "Показать всё"){
+    slides.forEach(item => {
+      item.style.display = "none" ? item.style.display = "flex" : "";
+    });
+  }
+}
+
+function closeSlidesMiddle(){
+  for(let i = 6; i < slides.length; i++){
+    slides[i].style.display = "flex" ? slides[i].style.display = "none" : "";
+  }
+  buttonChange();
+}
+
+function closeSlidesHuge(){
+  for(let i = 8; i < slides.length; i++){
+    slides[i].style.display = "flex" ? slides[i].style.display = "none" : "";
+  }
+  buttonChange();
+}
+
+function govno(){
+  if(btn.innerHTML == "Показать всё"){
+    slides.forEach(item => {
+      item.style.display = "none" ? item.style.display = "flex" : "";
+    });
+    buttonChange();
+  } else{
+    mediaQuery.matches ? closeSlidesHuge() : closeSlidesMiddle();
+  }
+}
+
+btn.addEventListener("click", govno);
+
+
